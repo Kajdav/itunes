@@ -11,12 +11,21 @@
       <div class="container">
         <div id="myContainer">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-music"></span> DevTunes</a>
+            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-music"></span> DevTunes {{dropDown}}</a>
           </div>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
-              <input type="text" class="form-control" ng-model="artist" placeholder="Artist Name" >
+              <select ng-model='dropDown'>
+                <option>All</option>
+                <option>Songs</option>
+                <option>Music Videos</option>
+                <option>Movies</option>
+                <option>TV Shows</option>
+                <option>Podcast</option>
+              </select>
+              <input type="text" class="form-control" ng-model="artist" placeholder="Search" >
               <button class="btn btn-primary" ng-click="getSongData()"> Submit </button>
+              <input type="text" class="form-control" ng-model="filterOptions.filterText" placeholder="Filter" >
             </div>
           </form>
         </div>
@@ -34,3 +43,18 @@
     <script src="js/itunesService.js"></script>
   </body>
 </html>
+
+
+         <!--  <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">All</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Songs</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Music Videos</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Movies</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">TV Shows</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Podcasts</a></li>
+            </ul>
+          </div> -->

@@ -23,7 +23,7 @@
                 <option>TV Shows</option>
                 <option>Podcast</option>
               </select>
-              <input type="text" class="form-control" ng-model="artist" placeholder="Search" >
+              <input type="text" class="form-control" ng-model="artist" ng-submit='getSongData()' placeholder="Search" >
               <button class="btn btn-primary" ng-click="getSongData()"> Submit </button>
               <input type="text" class="form-control" ng-model="filterOptions.filterText" placeholder="Filter" >
             </div>

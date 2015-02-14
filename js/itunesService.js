@@ -1,3 +1,4 @@
+
 var app = angular.module('itunes');
 
 app.service('itunesService', function($http, $q){
@@ -9,5 +10,29 @@ app.service('itunesService', function($http, $q){
   //Note that in the above line, artist is the parameter being passed in. 
   //You can return the http request or you can make your own promise in order to manipulate the data before you resolve it.
 
-    //Code here
+  this.getSongs = function(artist){
+  	var deferred = $q.defer();
+  	$http({
+  		method: 'JSONP',
+  		url: 'https://itunes.apple.com/search?term=' + artist + '&callback=JSON_CALLBACK'
+  	}).then(function(res){
+  		res = res.data.results;
+  		console.log(res);
+  		var results = [];
+  		for(var i = 0; i < res.length; i++){
+  			var obj = {
+  				AlbumArt: res[i].artworkUrl60,
+  				Artist: res[i].artistName,
+  				Collection: res[i].collectionName,
+  				Play: res[i].previewUrl,
+  				Type: res[i].kind
+  			};
+  			results.push(obj);
+  		}
+  		deferred.resolve(results);
+  	});
+  	return deferred.promise;
+  }
+
+
 });
